@@ -1,0 +1,53 @@
+
+  Managed C++ Using both .Net and std Libraries 
+ ===============================================
+
+  managed string lives on managed heap
+ --------------------------------------
+
+  Hello World
+
+  converting to unmanaged string
+ --------------------------------
+
+  Hello World
+
+  unmanaged string lives on unmanaged heap
+ ------------------------------------------
+
+  hello again
+
+  converting from unmanaged to managed strings
+ ----------------------------------------------
+
+  hello again
+
+  as always std::strings can live on the stack
+ ----------------------------------------------
+
+  a stack-based std::string
+
+
+  value types reside on the stack and primitives need no conversion
+ -------------------------------------------------------------------
+
+  integer: 3, and double: 3.1415927
+
+  integer: 3, and double: 3.1415927
+
+
+  managed array of managed type lives on managed heap
+ -----------------------------------------------------
+
+  0 1 4 9 16 
+
+  managed array of std type lives on managed heap
+ -------------------------------------------------
+
+  0 1 4 9 16 
+
+  unmanaged array of std type lives on stack
+ --------------------------------------------
+
+  0 1 4 9 16 
+

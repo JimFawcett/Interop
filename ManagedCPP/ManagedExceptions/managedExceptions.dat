@@ -1,0 +1,7 @@
+
+  Message:    from main
+  TargetSite: Int32 main()
+  StackTrace:
+     at main() in c:\su\cse775\code\managedcpp\managedexceptions\managedexceptions.cpp:line 32
+  in __finally
+

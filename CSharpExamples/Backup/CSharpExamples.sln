@@ -1,0 +1,53 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Properties.csproj", "{60F7DAF4-9094-46AA-820B-C99A6D6A94D1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demoIndexers", "demoIndexers\demoIndexers.csproj", "{B725A490-553E-4399-8EBA-A45B77D28990}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demoArrays", "demoArrays\demoArrays.csproj", "{BB2822B3-DC60-40BB-8D04-176414C312D8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "types", "types\types.csproj", "{D5912500-79EF-441C-B40F-5A7074687C17}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Disposing", "Disposing\Disposing.csproj", "{DC3C039A-B607-40F4-AD07-997749F05F26}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{60F7DAF4-9094-46AA-820B-C99A6D6A94D1}.Debug.ActiveCfg = Debug|.NET
+		{60F7DAF4-9094-46AA-820B-C99A6D6A94D1}.Debug.Build.0 = Debug|.NET
+		{60F7DAF4-9094-46AA-820B-C99A6D6A94D1}.Release.ActiveCfg = Release|.NET
+		{60F7DAF4-9094-46AA-820B-C99A6D6A94D1}.Release.Build.0 = Release|.NET
+		{B725A490-553E-4399-8EBA-A45B77D28990}.Debug.ActiveCfg = Debug|.NET
+		{B725A490-553E-4399-8EBA-A45B77D28990}.Debug.Build.0 = Debug|.NET
+		{B725A490-553E-4399-8EBA-A45B77D28990}.Release.ActiveCfg = Release|.NET
+		{B725A490-553E-4399-8EBA-A45B77D28990}.Release.Build.0 = Release|.NET
+		{BB2822B3-DC60-40BB-8D04-176414C312D8}.Debug.ActiveCfg = Debug|.NET
+		{BB2822B3-DC60-40BB-8D04-176414C312D8}.Debug.Build.0 = Debug|.NET
+		{BB2822B3-DC60-40BB-8D04-176414C312D8}.Release.ActiveCfg = Release|.NET
+		{BB2822B3-DC60-40BB-8D04-176414C312D8}.Release.Build.0 = Release|.NET
+		{D5912500-79EF-441C-B40F-5A7074687C17}.Debug.ActiveCfg = Debug|.NET
+		{D5912500-79EF-441C-B40F-5A7074687C17}.Debug.Build.0 = Debug|.NET
+		{D5912500-79EF-441C-B40F-5A7074687C17}.Release.ActiveCfg = Release|.NET
+		{D5912500-79EF-441C-B40F-5A7074687C17}.Release.Build.0 = Release|.NET
+		{DC3C039A-B607-40F4-AD07-997749F05F26}.Debug.ActiveCfg = Debug|.NET
+		{DC3C039A-B607-40F4-AD07-997749F05F26}.Debug.Build.0 = Debug|.NET
+		{DC3C039A-B607-40F4-AD07-997749F05F26}.Release.ActiveCfg = Release|.NET
+		{DC3C039A-B607-40F4-AD07-997749F05F26}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

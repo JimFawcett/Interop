@@ -1,0 +1,117 @@
+/////////////////////////////////////////////////////////////////////
+// Marshaling.cpp - Demonstrates use of marshaling and PInvoke     //
+//                                                                 //
+// Jim Fawcett, CSE775 - Distributed Objects, Spring 2003          //
+/////////////////////////////////////////////////////////////////////
+// Built with Win32 Project wizard                                 //
+//   - place MarshalingLib.dll in project and debug directories    //
+/////////////////////////////////////////////////////////////////////
+
+//#using <mscorlib.dll>
+//#using "c:/su/CSE775/code/managedCPP/MarshalingLib/Debug/MarshalingLib.dll"
+using namespace System;
+using namespace System::Runtime::InteropServices;
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+[ DllImport(
+    "MarshalingLib.dll", CharSet=CharSet::Ansi,
+    EntryPoint="?demoTransfer@CMarshalingLib@@QAEXPBD@Z"
+  )
+]
+extern "C" void CallDemoTransfer([MarshalAs(UnmanagedType::LPStr)] String^ pMsg);
+
+[ DllImport("MarshalingLib.dll")]
+extern "C" void CreateMLobj(IntPtr& pObj);
+
+[ DllImport("MarshalingLib.dll")]
+extern "C" void DeleteMLobj(IntPtr pObj);
+
+int main()
+{
+  cout << "\n  Demonstrate PInvoke with Specified Marshaling "
+       << "\n ===============================================\n";
+  cout.flush();
+
+  IntPtr pMLobj;
+  CreateMLobj(pMLobj);
+  String^ pMsg = gcnew String("Hello from Managed World");
+  CallDemoTransfer(pMsg);
+  DeleteMLobj(pMLobj);
+  cout << "\n\n";
+}
+
+
+
+  Demonstrate PInvoke with Specified Marshaling 
+ ===============================================
+
+  creating instance of CMarshalingLib
+  in demoTransfer: Hello from Managed World
+  destroying instance of CMarshalingLib
+
+#ifndef MARSHALINGLIB_H
+#define MARSHALINGLIB_H
+/////////////////////////////////////////////////////////////////////
+// MarshalingLib.H - Demonstrates use of marshaling and PInvoke    //
+//                                                                 //
+// Jim Fawcett, CSE775 - Distributed Objects, Spring 2003          //
+/////////////////////////////////////////////////////////////////////
+// Built with Win32 Project wizard                                 //
+/////////////////////////////////////////////////////////////////////
+
+#include <iostream>
+
+#ifdef MARSHALINGLIB_EXPORTS
+#define MARSHALINGLIB_API __declspec(dllexport)
+#else
+#define MARSHALINGLIB_API __declspec(dllimport)
+#endif
+
+class MARSHALINGLIB_API CMarshalingLib {
+public:
+  void demoTransfer(const char* str)
+  {
+    std::cout << "\n  in demoTransfer: " << str;
+  }
+};
+
+extern "C" MARSHALINGLIB_API void CreateMLobj(CMarshalingLib*& pObj)
+{
+  std::cout << "\n  creating instance of CMarshalingLib";
+  pObj = new CMarshalingLib();
+}
+
+extern "C" MARSHALINGLIB_API void DeleteMLobj(CMarshalingLib* pObj)
+{
+  std::cout << "\n  destroying instance of CMarshalingLib";
+  delete pObj;
+}
+
+#endif
+
+/////////////////////////////////////////////////////////////////////
+// MarshalingLib.cpp - Demonstrates use of Marshaling and PInvoke
+//
+
+#include "stdafx.h"
+#include "MarshalingLib.h"
+
+BOOL APIENTRY DllMain( HANDLE hModule, 
+                       DWORD  ul_reason_for_call, 
+                       LPVOID lpReserved
+           )
+{
+  switch (ul_reason_for_call)
+  {
+  case DLL_PROCESS_ATTACH:
+  case DLL_THREAD_ATTACH:
+  case DLL_THREAD_DETACH:
+  case DLL_PROCESS_DETACH:
+    break;
+  }
+    return TRUE;
+}
+

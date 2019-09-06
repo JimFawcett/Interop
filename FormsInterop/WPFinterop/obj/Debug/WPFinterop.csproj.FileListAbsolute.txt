@@ -1,0 +1,14 @@
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\bin\Debug\WPFinterop.exe
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\bin\Debug\WPFinterop.pdb
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\bin\Debug\CppBridge.dll
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\bin\Debug\CppBridge.pdb
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\Window1.baml
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\Window1.g.cs
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\App.g.cs
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop_MarkupCompile.cache
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop.g.resources
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop.Properties.Resources.resources
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop.csproj.GenerateResource.Cache
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop.exe
+C:\Users\jim\Desktop\FormsInterop\WPFinterop\obj\Debug\WPFinterop.pdb

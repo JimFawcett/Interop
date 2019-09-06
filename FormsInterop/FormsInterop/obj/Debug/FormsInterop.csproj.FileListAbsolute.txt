@@ -1,0 +1,13 @@
+C:\su\cse681\code\FormsInterop\FormsInterop\bin\Debug\FormsInterop.exe
+C:\su\cse681\code\FormsInterop\FormsInterop\bin\Debug\CppBridge.pdb
+C:\su\cse681\code\FormsInterop\FormsInterop\bin\Debug\CppBridge.dll
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\bin\Debug\FormsInterop.exe
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\bin\Debug\FormsInterop.pdb
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\bin\Debug\CppBridge.dll
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\bin\Debug\CppBridge.pdb
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\FormsInterop.Form1.resources
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\FormsInterop.Properties.Resources.resources
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\FormsInterop.csproj.GenerateResource.Cache
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\FormsInterop.exe
+C:\Users\jim\Desktop\FormsInterop\FormsInterop\obj\Debug\FormsInterop.pdb

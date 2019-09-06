@@ -1,0 +1,94 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=Windows-1252">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: demoWinForm, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "c:\Su\Cse681\code\demoCppWinForm\Debug\BAT000001.bat" with contents
+[
+@echo off
+if exist "c:\Su\Cse681\code\demoCppWinForm\Debug\" goto DirExists
+mkdir "c:\Su\Cse681\code\demoCppWinForm\Debug\"
+:DirExists
+if exist "c:\Su\Cse681\code\demoCppWinForm\Debug\TreeViewPlus.dll" erase "c:\Su\Cse681\code\demoCppWinForm\Debug\TreeViewPlus.dll"
+if exist "c:\Su\Cse681\code\demoCppWinForm\Debug\TreeViewPlus.dll" goto VCReportError
+xcopy "c:\Su\Cse681\code\demoCppWinForm\TreeViewPlus\obj\Debug\TreeViewPlus.dll" "c:\Su\Cse681\code\demoCppWinForm\Debug\"
+
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Copying assemblies to target directory..."
+exit 1
+:VCEnd
+]
+Creating command line "c:\Su\Cse681\code\demoCppWinForm\Debug\BAT000001.bat"
+Creating temporary file "c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000002.rsp" with contents
+[
+/Od /AI "C:\SU\CSE681\code\demoCppWinForm\Debug" /D "WIN32" /D "_DEBUG" /D "_MBCS" /FD /EHsc /MTd /GS /Yu"stdafx.h" /Fp"Debug/demoWinForm.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Zi /clr /TP /FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\mscorlib.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+/FU "C:\SU\CSE681\code\demoCppWinForm\TreeViewPlus\obj\Debug\TreeViewPlus.dll"
+.\Form1.cpp
+.\BrowseForm.cpp
+.\AssemblyInfo.cpp
+]
+Creating command line "cl.exe @c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000002.rsp /nologo"
+Creating temporary file "c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000003.rsp" with contents
+[
+/Od /AI "C:\SU\CSE681\code\demoCppWinForm\Debug" /D "WIN32" /D "_DEBUG" /D "_MBCS" /FD /EHsc /MTd /GS /Yc"stdafx.h" /Fp"Debug/demoWinForm.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Zi /clr /TP /FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\mscorlib.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+/FU "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+/FU "C:\SU\CSE681\code\demoCppWinForm\TreeViewPlus\obj\Debug\TreeViewPlus.dll"
+.\stdafx.cpp
+]
+Creating command line "cl.exe @c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000003.rsp /nologo"
+Creating command line "resgen.exe /compile "c:\Su\Cse681\code\demoCppWinForm\Form1.resX","Debug/demoWinForm.Form1.resources" "c:\Su\Cse681\code\demoCppWinForm\BrowseForm.resX","Debug/demoWinForm.BrowseForm.resources""
+Creating command line "rc.exe /fo"Debug/app.res" .\app.rc"
+Creating temporary file "c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000004.rsp" with contents
+[
+/OUT:"C:\SU\CSE681\code\demoCppWinForm\Debug\demoWinForm.exe" /INCREMENTAL /NOLOGO /DEBUG /ASSEMBLYDEBUG /PDB:"C:\SU\CSE681\code\demoCppWinForm\Debug/demoWinForm.pdb" /SUBSYSTEM:WINDOWS /FIXED:No  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /ASSEMBLYRESOURCE:.\Debug\demoWinForm.BrowseForm.resources /ASSEMBLYRESOURCE:.\Debug\demoWinForm.Form1.resources
+.\Debug\AssemblyInfo.obj
+.\Debug\BrowseForm.obj
+.\Debug\Form1.obj
+.\Debug\stdafx.obj
+.\Debug\app.res
+]
+Creating command line "link.exe @c:\Su\Cse681\code\demoCppWinForm\Debug\RSP000004.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Copying assemblies to target directory...
+C:\Su\Cse681\code\demoCppWinForm\TreeViewPlus\obj\Debug\TreeViewPlus.dll
+1 File(s) copied
+Compiling...
+stdafx.cpp
+Compiling...
+Form1.cpp
+BrowseForm.cpp
+AssemblyInfo.cpp
+Generating Code...
+Compiling managed resources...
+Read in 20 resources from 'c:\Su\Cse681\code\demoCppWinForm\Form1.resX'
+Writing resource file...  Done.
+Read in 10 resources from 'c:\Su\Cse681\code\demoCppWinForm\BrowseForm.resX'
+Writing resource file...  Done.
+Compiling resources...
+Linking...
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://c:\Su\Cse681\code\demoCppWinForm\Debug\BuildLog.htm"
+demoWinForm - 0 error(s), 0 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

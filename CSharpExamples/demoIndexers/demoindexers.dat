@@ -1,0 +1,4 @@
+
+  creature["falcon"] is True
+  creature["falcon"] is False
+

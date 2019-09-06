@@ -1,0 +1,59 @@
+/////////////////////////////////////////////////////////////////////
+// EmbeddingManaged.cpp - Demonstrates use of unmanaged classes    //
+//                        holding pointers to managed objects      //
+//                                                                 //
+// Jim Fawcett, CSE775 - Distributed Objects, Spring 2003          //
+/////////////////////////////////////////////////////////////////////
+// Built with Empty Managed C++ Project wizard                     //
+/////////////////////////////////////////////////////////////////////
+
+//#using <mscorlib.dll>
+#include <vcclr.h>          // gcroot, PtrToStringChars
+using namespace System;
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+///////////////////////////////////////////////////////////////
+// unmanaged class holding a pointer to a managed object
+//
+class unmanaged
+{
+public:
+  unmanaged(const std::wstring& str);
+  std::wstring get_value();
+  void set_value(const std::wstring& str);
+private:
+  gcroot<System::String^> pStr;  // needed so GC can track pointer
+};
+
+unmanaged::unmanaged(const std::wstring& str)
+{
+  pStr = gcnew String(str.c_str());
+}
+
+std::wstring unmanaged::get_value()
+{
+  pin_ptr<const wchar_t> pRaw = PtrToStringChars(pStr);
+  return std::wstring(pRaw);
+}
+
+void unmanaged::set_value(const std::wstring& str)
+{
+  pStr = gcnew String(str.c_str());
+}
+
+//----< test unmanaged with embedded managed object >----------
+
+int main()
+{
+  cout << "\n  Demonstrating Unmanaged Class holding Pointer to Managed"
+       << "\n ==========================================================\n";
+
+  unmanaged unMan(L"Hello World");
+  wcout << L"\n  " << unMan.get_value();
+
+  unMan.set_value(L"Hello New World");
+  wcout << L"\n  " << unMan.get_value() << L"\n\n";
+}

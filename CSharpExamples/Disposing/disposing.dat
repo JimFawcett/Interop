@@ -1,0 +1,7 @@
+  Disposing of System.IO.StreamWriter
+  a line of text  a line of text
+  Disposing of System.IO.StringWriter
+
+  Disposing of System.IO.StreamWriter
+  another line of text  another line of text
+  Disposing of System.IO.StringWriter

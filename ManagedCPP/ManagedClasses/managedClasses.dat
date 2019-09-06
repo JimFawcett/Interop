@@ -1,0 +1,32 @@
+
+  managed class holding reference to a StringBuilder object
+ -----------------------------------------------------------
+
+  Hello World
+
+  Hello World
+
+  A Replaced World
+
+  A Replaced World
+
+  managed class holding pointer to a StringBuilder object
+ ---------------------------------------------------------
+
+  A New World
+
+  A New World
+
+  A Newer World
+
+  A New World
+
+  A New World
+
+  managed classes derive from object: here is pNew->ToString()
+ --------------------------------------------------------------
+
+  Managed
+
+  A string written to StringBuilder%
+

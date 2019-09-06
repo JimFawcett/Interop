@@ -1,0 +1,12 @@
+
+  Demo Mixed classes holding references to each other
+ =====================================================
+
+  Hello from instance of managed reference class
+  Hello from instance of managed reference class
+  calling method on pointer to native type I hold:
+  Hello from instance of native C++ class
+
+  Hello from instance of native C++ class
+  calling method on managed reference type I hold:
+

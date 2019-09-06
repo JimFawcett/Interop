@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "demoWinForm", "demoWinForm.vcproj", "{D0393156-385D-42BE-8BEB-1AC98CE2E0AE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeViewPlus", "TreeViewPlus\TreeViewPlus.csproj", "{4FACEE59-D5C6-4E42-8459-BB92EFDFB851}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{D0393156-385D-42BE-8BEB-1AC98CE2E0AE}.Debug.ActiveCfg = Debug|Win32
+		{D0393156-385D-42BE-8BEB-1AC98CE2E0AE}.Debug.Build.0 = Debug|Win32
+		{D0393156-385D-42BE-8BEB-1AC98CE2E0AE}.Release.ActiveCfg = Release|Win32
+		{D0393156-385D-42BE-8BEB-1AC98CE2E0AE}.Release.Build.0 = Release|Win32
+		{4FACEE59-D5C6-4E42-8459-BB92EFDFB851}.Debug.ActiveCfg = Debug|.NET
+		{4FACEE59-D5C6-4E42-8459-BB92EFDFB851}.Debug.Build.0 = Debug|.NET
+		{4FACEE59-D5C6-4E42-8459-BB92EFDFB851}.Release.ActiveCfg = Release|.NET
+		{4FACEE59-D5C6-4E42-8459-BB92EFDFB851}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,210 @@
+/////////////////////////////////////////////////////////////////////
+// ManagedApp.cpp - Demonstrates use of .Net and std libraries     //
+//                  in managed C++ code                            //
+//                                                                 //
+// Jim Fawcett, CSE775 - Distributed Objects, Spring 2003          //
+/////////////////////////////////////////////////////////////////////
+// Built with Managed C++ Application wizard                       //
+/////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+
+//#using <mscorlib.dll>  // don't need this with C++/CLI
+#include <tchar.h>
+using namespace System;
+using namespace System::Text;
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+//----< convert from System::String^ to std::wstring* >--------------
+//
+//  user must eventually call delete on returned pointer
+//
+std::wstring* convert_SysStrToStdStrPtr(System::String^ str)
+{
+  std::wstring* stdStr = new std::wstring();
+  for(int i=0; i<str->Length; ++i)
+    stdStr->append(1,str[i]);
+  return stdStr;
+}
+//----< convert from System::String^ to std::wstring >---------------
+
+std::wstring convert_SysStrToStdStr(System::String^ str)
+{
+  std::wstring stdStr;
+  for(int i=0; i<str->Length; ++i)
+    stdStr.append(1,str[i]);
+  return stdStr;
+}
+//----< convert from std::wstring* to System::String* >--------------
+
+System::String^ convert_StdStrToSysStr(std::wstring str)
+{
+  System::String^ sysStr = gcnew String(str.c_str());
+  return sysStr;
+}
+//----< display a message on console >-------------------------------
+
+void msg(const std::string& s)
+{
+  cout << "\n  " << s;
+  std::string underline(s.size()+2,'-');
+  cout << "\n " << underline << endl;
+}
+//
+//----< using .Net and std libraries >-------------------------------
+
+int _tmain(void)
+{
+  cout << "\n  Managed C++ Using both .Net and std Libraries "
+       << "\n ==============================================="
+       << endl;
+
+////////////////////////////////////////////////
+  msg("managed string lives on managed heap");
+////////////////////////////////////////////////
+
+  String^ sysStr = gcnew String(L"\n  Hello World");
+  Console::WriteLine(sysStr);
+
+//////////////////////////////////////////
+  msg("converting to unmanaged string");
+//////////////////////////////////////////
+
+  wstring stdStr = convert_SysStrToStdStr(sysStr);
+  wcout << stdStr.c_str() << endl;
+
+////////////////////////////////////////////////////
+  msg("unmanaged string lives on unmanaged heap");
+////////////////////////////////////////////////////
+
+  wstring* anotherStdStr = new wstring(L"\n  hello again");
+  wcout << anotherStdStr->c_str() << endl;
+
+////////////////////////////////////////////////////////
+  msg("converting from unmanaged to managed strings");
+////////////////////////////////////////////////////////
+
+  String^ anotherSysStr = convert_StdStrToSysStr(*anotherStdStr);
+  Console::Write("{0}\n",anotherSysStr);
+  delete anotherStdStr;
+
+////////////////////////////////////////////////////////
+  msg("as always std::strings can live on the stack");
+////////////////////////////////////////////////////////
+
+  wstring stkStdStr = L"a stack-based std::string";
+  wcout << L"\n  " << stkStdStr << L"\n" << endl;
+
+  // Managed Strings must live on the managed heap
+  // String stkSysStr = *new String("this won't work");
+
+//
+/////////////////////////////////////////////////////////////////////////////
+  msg("value types reside on the stack and primitives need no conversion");
+/////////////////////////////////////////////////////////////////////////////
+
+  int three = 3;
+  double pi = 3.1415927;
+
+  Console::Write(
+    "\n  integer: {0}, and double: {1}\n",three.ToString(),pi.ToString()
+  );
+  wcout.precision(8);
+  wcout << L"\n  integer: " << three << L", and double: " << pi << L"\n" 
+        << endl;
+
+///////////////////////////////////////////////////////////////
+  msg("managed array of managed type lives on managed heap");
+///////////////////////////////////////////////////////////////
+
+  array<Int32>^ arr = gcnew array<Int32>(5);
+  for(Int32 i=0; i<arr->Length; ++i)    // fill it
+    arr[i] = i*i;
+  Console::Write("\n  ");
+  for(int i=0; i<arr->Length; ++i)    // show it
+    Console::Write("{0} ",arr[i].ToString());
+  Console::Write("\n");
+
+///////////////////////////////////////////////////////////
+  msg("managed array of std type lives on managed heap");
+///////////////////////////////////////////////////////////
+
+  array<int>^ anotherArray = gcnew array<int>(5);  
+  for(int i=0; i<anotherArray->Length; ++i)     // fill it
+    anotherArray[i] = i*i;
+  cout << "\n  ";
+  for(int i=0; i<anotherArray->Length; ++i)     // show it
+    cout << anotherArray[i] << " ";
+  cout << endl;
+
+//////////////////////////////////////////////////////
+  msg("unmanaged array of std type lives on stack");
+//////////////////////////////////////////////////////
+
+  int unManagedArray[5];                        // fill
+  for(int i=0; i<5; ++i)
+    unManagedArray[i] = i*i;
+  cout << "\n  ";
+  for(int i=0; i<5; ++i)                        // show
+    cout << unManagedArray[i] << " ";
+  cout << "\n" << endl;
+
+  return 0;
+}
+
+  Managed C++ Using both .Net and std Libraries 
+ ===============================================
+
+  managed string lives on managed heap
+ --------------------------------------
+
+  Hello World
+
+  converting to unmanaged string
+ --------------------------------
+
+  Hello World
+
+  unmanaged string lives on unmanaged heap
+ ------------------------------------------
+
+  hello again
+
+  converting from unmanaged to managed strings
+ ----------------------------------------------
+
+  hello again
+
+  as always std::strings can live on the stack
+ ----------------------------------------------
+
+  a stack-based std::string
+
+
+  value types reside on the stack and primitives need no conversion
+ -------------------------------------------------------------------
+
+  integer: 3, and double: 3.1415927
+
+  integer: 3, and double: 3.1415927
+
+
+  managed array of managed type lives on managed heap
+ -----------------------------------------------------
+
+  0 1 4 9 16 
+
+  managed array of std type lives on managed heap
+ -------------------------------------------------
+
+  0 1 4 9 16 
+
+  unmanaged array of std type lives on stack
+ --------------------------------------------
+
+  0 1 4 9 16 
+
+

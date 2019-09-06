@@ -1,0 +1,406 @@
+///////////////////////////////////////////////////////////////
+// hello.cpp - first managed C++ program                     //
+//                                                           //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005 //
+///////////////////////////////////////////////////////////////
+
+#using <mscorlib.dll>
+#include <iostream>
+#include <string>
+using namespace System;
+using namespace System::Text;
+
+namespace myApp
+{
+  /////////////////////////////////////////////////////
+  // managed class
+
+  public ref class firstClass
+  {
+  private:
+    String^ m_pString;  // must be pointer or reference
+                        // created on managed heap
+  public:
+    firstClass(String^ pOutStr) : m_pString(pOutStr) {}
+    void speak() 
+    {
+      StringBuilder^ temp = gcnew StringBuilder("\n  ");
+      temp->Append(m_pString);
+      Console::WriteLine(temp);
+    }
+  };
+
+  /////////////////////////////////////////////////////
+  // unmanaged class
+
+  class secondClass
+  {
+  private:
+    std::string m_String;  // created in stack frame
+
+  public:
+    secondClass(const std::string& str) : m_String(str) {};
+    void say()
+    {
+      std::string temp = "\n  ";
+      temp.append(m_String);
+      std::cout << temp.c_str();
+      std::cout.flush();
+    }
+  };
+}
+
+//
+using namespace myApp;
+
+void main(int argc, char* argv[])
+{
+  Console::Write("\n  Demonstrating Managed and UnManaged C++");
+  Console::Write("\n =========================================\n");
+
+  std::cout << "\n  Command line arguments are:";
+  for(int i=0; i<argc; ++i)
+    std::cout << "\n  " << argv[i];
+  std::cout << std::endl;
+
+  Console::Write("\n  Creating managed Object");
+
+  // Create instance of user defined managed class.
+  // Note that firstClass constructor will accept a literal string.
+
+  firstClass^ myFirstClass = gcnew firstClass(gcnew String("first class here!"));
+  myFirstClass->speak();
+
+  Console::Write("\n  Creating unmanaged Object");
+
+  // Create instance of user defined unmanaged class.
+
+  secondClass mySecondClass("second class here!");
+  mySecondClass.say();
+
+  Console::Write("\n\n");
+}
+
+
+  Demonstrating Managed and UnManaged C++
+ =========================================
+
+  Command line arguments are:
+  hello
+
+  Creating managed Object
+  first class here!
+
+  Creating unmanaged Object
+  second class here!
+
+///////////////////////////////////////////////////////////////
+// demoArrays.cpp - Managed arrays work this way             //
+//                                                           //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005 //
+///////////////////////////////////////////////////////////////
+
+using namespace System;
+
+namespace Arrays
+{
+  ref class demoArrays
+  {
+  public:
+    void display(array<Double,2>^ arr)
+    {
+      for(int i=0; i<arr->GetLength(0); ++i)
+      {
+        Console::Write("\n  ");
+        for(int j=0; j<arr->GetLength(1); ++j)
+        {
+          Console::Write("{0,5} ",arr[i,j]);
+        }
+      }
+      Console::Write("\n\n");
+    }
+  };
+}
+
+using namespace Arrays;
+
+void main()
+{
+  Console::Write("\n  Demonstrating Arrays in Managed C++");
+  Console::Write("\n =====================================\n");
+
+  array<String^>^ animals = { "ardvvark", "tiger", "vulture", "jackel", "mule" };
+  for(int i=0; i<5; ++i)
+    Console::Write("\n  {0}",animals[i]);
+  Console::Write("\n\n");
+
+  array<Double,2>^ matrix = gcnew array<Double,2>(3,2);
+  for(int i=0; i<3; ++i)
+    for(int j=0; j<2; ++j)
+      matrix[i,j] = i+j-0.5;
+  demoArrays^ da = gcnew demoArrays();
+  da->display(matrix);
+}
+
+  Demonstrating Arrays in Managed C++
+ =====================================
+
+  ardvvark
+  tiger
+  vulture
+  jackel
+  mule
+
+
+   -0.5   0.5 
+    0.5   1.5 
+    1.5   2.5 
+
+///////////////////////////////////////////////////////////////
+// demoProps.cpp - Properties work this way
+//
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005 
+///////////////////////////////////////////////////////////////
+
+//#using <mscorlib.dll>
+using namespace System;
+
+namespace Properties
+{
+  ref class demoProps
+  {
+  public:
+    property String^ name { 
+      String^ get() { return _name; }
+      void set(String^ value) { _name = value; }
+    }
+    property String^ othername;
+
+  private:
+    String^ _name;
+  };
+}
+
+void main()
+{
+  Console::Write("\n  Demonstrating Properties in Managed C++");
+  Console::Write("\n =========================================\n");
+
+  Properties::demoProps^ dp = gcnew Properties::demoProps();
+  dp->name = "Bartholomew";
+  Console::Write("\n  name property: {0}\n",dp->name);
+  dp->othername = "Albert";
+  Console::Write("\n  othername property: {0}\n\n",dp->othername);
+}
+
+  Demonstrating Properties in Managed C++
+ =========================================
+
+  name property: Bartholomew
+
+  othername property: Albert
+
+///////////////////////////////////////////////////////////////
+// demoIndexers.cs - Indexers work this way
+//
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005
+///////////////////////////////////////////////////////////////
+
+#using <mscorlib.dll>
+using namespace System;
+
+namespace Indexers
+{
+  ref class demoIndexers
+  {
+  private:
+    static String^ _falcon        = "falcon"; 
+    static String^ _falconType    = "bird";
+    static String^ _arrdvark      = "arrdvark"; 
+    static String^ _arrdvarkType  = "mammal";
+    static String^ _armadillo     = "armadillo"; 
+    static String^ _armadilloType = "mammal";
+    static String^ _kangaroo      = "kangaroo"; 
+    static String^ _kangarooType  = "marsupial";
+
+  public:
+
+    property String^ default[String^]
+    {
+      String^ get(String^ creature)
+      {
+        if(creature->CompareTo(_falcon)    == 0) return _falconType;
+        if(creature->CompareTo(_arrdvark)  == 0) return _arrdvarkType;
+        if(creature->CompareTo(_armadillo) == 0) return _armadilloType;
+        if(creature->CompareTo(_kangaroo)  == 0) return _kangarooType;
+        return "unknown";
+      }
+
+      void set(String^ creature, String^ value)
+      {
+        if(creature->CompareTo(_falcon)   == 0) _falconType    = value;
+        if(creature->CompareTo(_arrdvark) == 0) _arrdvarkType  = value;
+        if(creature->CompareTo(_armadillo)== 0) _armadilloType = value;
+        if(creature->CompareTo(_kangaroo) == 0) _kangarooType  = value;
+      }
+    }
+  };
+}
+
+using namespace Indexers;
+
+void main()
+{
+  Console::Write("\n  Demonstrating Indexers in Managed C++");
+  Console::Write("\n =======================================\n");
+
+  demoIndexers^ creatures = gcnew demoIndexers();
+  Console::Write(
+    "\n  creature[\"falcon\"] is {0}",
+    creatures["falcon"]
+  );
+  creatures["falcon"] = "bird of prey";
+  Console::Write(
+    "\n  creature[\"falcon\"] is {0}\n\n",
+    creatures["falcon"]
+  );
+}
+
+  Demonstrating Indexers in Managed C++
+ =======================================
+
+  creature["falcon"] is bird
+  creature["falcon"] is bird of prey
+
+///////////////////////////////////////////////////////////////
+// demoDelegate.cpp - Delegates work this way
+//
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005
+///////////////////////////////////////////////////////////////
+
+using namespace System;
+
+namespace Delegates
+{
+  ref class demoDelegates
+  {
+  public:
+    delegate void DelType(String^ str);
+    DelType^ demoDel;
+
+    void EventHandler(String ^str)
+    {
+      Console::Write("\n  myDel invoked with string {0}", str);
+    }
+
+    void publishEvent()
+    {
+      if(demoDel != nullptr)
+        demoDel->Invoke("Hi there");
+    }
+  };
+}
+
+using namespace Delegates;
+
+void main()
+{
+  Console::Write("\n  Demonstrating Delegates in Managed C++");
+  Console::Write("\n ========================================\n");
+
+  demoDelegates^ demo = gcnew demoDelegates();
+  demo->demoDel = gcnew demoDelegates::DelType(demo, &demoDelegates::EventHandler);
+  demo->publishEvent();
+  Console::Write("\n\n");
+}
+
+  Demonstrating Delegates in Managed C++
+ ========================================
+
+  myDel invoked with string Hi there
+
+///////////////////////////////////////////////////////////////
+// types.cs - Getting type information at run-time           //
+//                                                           //
+// Jim Fawcett, CSE687 - Object Oriented Design, Spring 2005 //
+///////////////////////////////////////////////////////////////
+
+#using <mscorlib.dll>
+using namespace System; 
+
+namespace types
+{
+  ref class CApp
+  {
+  public:
+    static bool IsInteger( Object^ obj )
+    { 
+      bool isInt = obj->GetType()->Equals(Int32::typeid);
+      bool isLong = obj->GetType()->Equals(Int64::typeid);
+
+      if( isInt || isLong )
+        return true; 
+      else 
+        return false;
+    }
+    static void DisplayTypeInfo( Object^ obj ) 
+    { 
+      Console::Write( "\n  Type name = {0}", obj->GetType()->Name );
+      Console::Write( "\n  full name = {0}", obj->GetType()->FullName ); 
+      Console::Write( "\n  namesapce = {0}", obj->GetType()->Namespace ); 
+      Console::Write( "\n  module    = {0}", obj->GetType()->Module ); 
+    }
+  }; 
+}
+
+using namespace types;
+
+void main()
+{ 
+  Console::Write("\n  Demonstrating Type Queries in Managed C++");
+  Console::Write("\n ===========================================\n");
+
+  String^ s = gcnew String("fred"); 
+  Object% sRef = *s;
+  long i = 10; 
+  Object^ iPtr = i;  // implicit boxing
+
+  CApp^ pCa = gcnew CApp;
+  Console::Write(
+    "\n  {0} is {1}an integer", 
+    s, 
+    (pCa->IsInteger(s) ? gcnew String("") : gcnew String("not "))
+  ); 
+  Console::Write(
+    "\n  {0} is {1}an integer", 
+    iPtr, 
+    (pCa->IsInteger(iPtr) ? gcnew String("") : gcnew String("not "))
+  ); 
+
+  Object^ app = gcnew CApp();
+  CApp::DisplayTypeInfo(app);
+  array<String^>^ animals = { "ardvvark", "tiger", "vulture", "jackel", "mule" };
+  CApp::DisplayTypeInfo(animals);
+  CApp::DisplayTypeInfo(iPtr);
+
+  Console::Write("\n\n");
+}
+
+  Demonstrating Type Queries in Managed C++
+ ===========================================
+
+  fred is not an integer
+  10 is an integer
+  Type name = CApp
+  full name = types.CApp
+  namesapce = types
+  module    = types.exe
+  Type name = String[]
+  full name = System.String[]
+  namesapce = System
+  module    = CommonLanguageRuntimeLibrary
+  Type name = Int32
+  full name = System.Int32
+  namesapce = System
+  module    = CommonLanguageRuntimeLibrary
+

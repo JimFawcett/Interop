@@ -1,0 +1,14 @@
+fred is not an integer
+10 is an integer
+Type name = CApp
+full name = types.CApp
+namesapce = types
+module    = types.exe
+Type name = String[]
+full name = System.String[]
+namesapce = System
+module    = CommonLanguageRuntimeLibrary
+Type name = Int64
+full name = System.Int64
+namesapce = System
+module    = CommonLanguageRuntimeLibrary

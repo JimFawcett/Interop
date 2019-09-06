@@ -1,0 +1,8 @@
+
+  Demonstrate PInvoke with Specified Marshaling 
+ ===============================================
+
+  creating instance of CMarshalingLib
+  in demoTransfer: Hello from Managed World
+  destroying instance of CMarshalingLib
+
